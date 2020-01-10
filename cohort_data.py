@@ -15,16 +15,16 @@ def unique_houses(filename):
     """
     # Code goes here
     cohort_data = open(filename)
-    houses = []
+    houses = set()
     # print(type(cohort_data), cohort_data)
     for line in cohort_data:
         line = line.rstrip()
         words = line.split("|")
 
         if words[2] != "":
-            houses.append(words[2])
+            houses.add(words[2])
 
-    houses = set(houses)
+
     return houses
 
 
