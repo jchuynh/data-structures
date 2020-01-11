@@ -24,9 +24,8 @@ def unique_houses(filename):
         if words[2] != "":
             houses.add(words[2])
 
-
     return houses
-
+    filename.close()
 
 def sort_by_cohort(filename):
     """TODO: Return a list of all cohort lists, including ghosts but not instructors.
@@ -50,6 +49,53 @@ def sort_by_cohort(filename):
     ghosts = []
 
     # Code goes here
+
+    # open the file
+    
+    cohort_data = open(filename)
+
+
+
+    for line in cohort_data:
+        line = line.rstrip()
+        student_info = line.split("|")
+
+        # if student_info[4] != 'I' and student_info[4] != 'G':
+        #   all_students.append(student_info[0] + " " + student_info[1])
+
+        if student_info[4] == 'Fall 2015':
+            fall_15.append(student_info[0] + " " + student_info[1])
+
+        elif student_info[4] == 'Summer 2016':
+            summer_16.append(student_info[0] + " " + student_info[1])
+
+        elif student_info[4] == 'Spring 2016':
+            spring_16.append(student_info[0] + " " + student_info[1])
+
+        elif student_info[4] == 'Winter 2016':
+            winter_16.append(student_info[0] + " " + student_info[1])
+
+        elif student_info[4] == 'G':
+            ghosts.append(student_info[0] + " " + student_info[1])
+
+        all_students = [fall_15, winter_16, spring_16, summer_16, ghosts]
+
+    #if words[4] == 'G':
+    #ghosts.append(words[0] + words[1])
+
+
+    #create set for cohorts at position 4 in words 
+        #for line in cohort_data:
+    #     line = line.rstrip()
+    #     words = line.split("|")
+
+    #     if words[4] != "":
+    #         houses.add(words[2])
+
+    # # strip and split file
+    # 
+
+
 
     return all_students
 
