@@ -54,14 +54,9 @@ def sort_by_cohort(filename):
     
     cohort_data = open(filename)
 
-
-
     for line in cohort_data:
         line = line.rstrip()
         student_info = line.split("|")
-
-        # if student_info[4] != 'I' and student_info[4] != 'G':
-        #   all_students.append(student_info[0] + " " + student_info[1])
 
         if student_info[4] == 'Fall 2015':
             fall_15.append(student_info[0] + " " + student_info[1])
@@ -80,24 +75,8 @@ def sort_by_cohort(filename):
 
         all_students = [fall_15, winter_16, spring_16, summer_16, ghosts]
 
-    #if words[4] == 'G':
-    #ghosts.append(words[0] + words[1])
-
-
-    #create set for cohorts at position 4 in words 
-        #for line in cohort_data:
-    #     line = line.rstrip()
-    #     words = line.split("|")
-
-    #     if words[4] != "":
-    #         houses.add(words[2])
-
-    # # strip and split file
-    # 
-
-
-
     return all_students
+    filename.close()
 
 
 def hogwarts_by_house(filename):
@@ -124,6 +103,41 @@ def hogwarts_by_house(filename):
     instructors = []
 
     # Code goes here
+
+    cohort_data = open(filename)
+
+    for line in cohort_data:
+        line = line.rstrip()
+        student_info = line.split("|")
+
+        if student_info[3] == 'Hufflepuff':
+            hufflepuff.append(student_info[1])
+
+        elif student_info[3] == "Gryffindor":
+            gryffindor.append(student_info[1])
+
+        elif student_info[3] == "Ravenclaw":
+            ravenclaw.append(student_info[1])
+
+        elif student_info[3] == "Slytherin":
+            slytherin.append(student_info[1])
+
+        elif student_info[2] == "Dumbledore's Army":
+            dumbledores_army.append(student_info[1])
+
+        elif student_info[4] == 'G':
+            ghosts.append(student_info[1])
+
+        elif student_info[4] == 'I':
+            instructors.append(student_info[1])
+
+    all_hogwarts = [hufflepuff, 
+                    gryffindor, 
+                    ravenclaw, 
+                    slytherin, 
+                    dumbledores_army, 
+                    ghosts, 
+                    instructors]
 
     return all_hogwarts
 
